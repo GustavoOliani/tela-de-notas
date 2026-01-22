@@ -1,0 +1,3 @@
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+ALTER TABLE notes 
+ALTER COLUMN id SET DEFAULT gen_random_uuid();
