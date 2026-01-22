@@ -1,10 +1,20 @@
-# Usando a imagem oficial do Eclipse Temurin para Java 21
+# Etapa 1: Build do jar
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+WORKDIR /app
+
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Etapa 2: Exutar a aplicação
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
-# Copia o jar gerado pelo Maven (ajuste o nome se necessário)
-COPY target/*.jar app.jar
+# Copia o jar gerado pelo Maven
+COPY --from=build /app/target/*.jar app.jar
 
 # Expõe a porta padrão do Spring
 EXPOSE 8080
