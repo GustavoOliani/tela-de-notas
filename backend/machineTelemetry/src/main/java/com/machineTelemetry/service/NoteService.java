@@ -1,5 +1,9 @@
 package com.machineTelemetry.service;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -30,7 +34,17 @@ public class NoteService {
                 .toList();
     }
 
-    public NoteEntity convertToEntity(NoteDTO dto) {
+    public List<NoteDTO> findNotesBy(String site, String equipment, LocalDate start, LocalDate end) {
+        Instant startInstant = (start != null) ? start.atStartOfDay(ZoneOffset.UTC).toInstant() : null;
+        Instant endInstant = (end != null) ? end.atTime(LocalTime.MAX).atZone(ZoneOffset.UTC).toInstant() : null;
+
+        return noteRepository.findByFilters(site, equipment, startInstant, endInstant)
+                .stream()
+                .map(this::convertToResponseDTO)
+                .toList();
+    }
+
+    private NoteEntity convertToEntity(NoteDTO dto) {
         NoteEntity note = new NoteEntity();
         note.setId(dto.getId());
         note.setSite(dto.getSite());
