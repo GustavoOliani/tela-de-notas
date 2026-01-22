@@ -1,4 +1,4 @@
-package com.machineTelemetry.model;
+package com.machineTelemetry.model.entity;
 
 import java.time.Instant;
 import java.util.UUID;
