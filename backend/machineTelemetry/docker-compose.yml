@@ -14,6 +14,9 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    volumes:
+      - ./src/main/resources/db/data/notes.csv:/var/lib/postgresql/data_seeds/notes.csv
+      - db_data:/var/lib/postgresql/data
 
   aplication:
     build:
@@ -31,3 +34,6 @@ services:
         condition: service_healthy
     env_file:
       - .env
+
+volumes:
+  db_data:
