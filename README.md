@@ -19,6 +19,15 @@ Clone o repositório:
 git clone https://github.com/GustavoOliani/tela-de-notas.git
 ```
 
+Criar o .env na raiz, exemplo de um
+```
+DB_USER="user"
+DB_PASSWORD="password"
+DB_NAME="telemetry_db"
+DB_PORT=5432
+COMPOSE_PROJECT_NAME="tela_de_notas"
+```
+
 Suba os containers:
 ```Bash
 docker-compose up --build -d
