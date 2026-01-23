@@ -20,8 +20,8 @@ services:
 
   aplication:
     build:
-      context: /backend/machineTelemetry/
-      dockerfile: /infra/telemetry.dockerfile
+      context: ./backend/machineTelemetry/
+      dockerfile: ./infra/telemetry.dockerfile
     container_name: telemetry_API
     ports:
       - "8080:8080"
@@ -37,8 +37,8 @@ services:
 
   frontend:
     build:
-      context: /frontend/notes-screen/
-      dockerfile: /infra/front.dockerfile
+      context: ./frontend/notes-screen/
+      dockerfile: ./infra/front.dockerfile
     ports:
       - "4200:80" # Acessaremos no navegador via localhost:4200
     depends_on:
