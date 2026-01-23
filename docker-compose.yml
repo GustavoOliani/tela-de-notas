@@ -15,13 +15,13 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - ./src/main/resources/db/data/notes.csv:/var/lib/postgresql/data_seeds/notes.csv
+      - /backend/machineTelemetry/src/main/resources/db/data/notes.csv:/var/lib/postgresql/data_seeds/notes.csv
       - db_data:/var/lib/postgresql/data
 
   aplication:
     build:
-      context: .
-      dockerfile: infra/telemetry.dockerfile
+      context: /backend/machineTelemetry/
+      dockerfile: /infra/telemetry.dockerfile
     container_name: telemetry_API
     ports:
       - "8080:8080"
@@ -35,5 +35,19 @@ services:
     env_file:
       - .env
 
+  frontend:
+    build:
+      context: /frontend/notes-screen/
+      dockerfile: /infra/front.dockerfile
+    ports:
+      - "4200:80" # Acessaremos no navegador via localhost:4200
+    depends_on:
+      - aplication
+    networks:
+      - telemetry-net
+
+networks:
+  telemetry-net:
+    driver: bridge
 volumes:
   db_data:

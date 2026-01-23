@@ -1,0 +1,38 @@
+/* Espaçamento geral da página */
+.container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Garante que os campos de filtro fiquem alinhados */
+.filters-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Ajuste para o campo de data não ficar menor que os outros */
+mat-form-field {
+  min-width: 200px;
+}
+
+/* Estilo para a tabela ocupar o espaço disponível */
+.mat-mdc-table {
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.img-mirror {
+  transform: scaleX(-1);
+}
+
+.img-primary {
+  background-color: var(--color-primary-500);
+}
+
+.primary {
+  background-color: var(--color-primary-500);
+}

@@ -1,0 +1,100 @@
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh; /* Garante que ocupe a altura total da janela */
+  overflow: hidden; /* Evita scroll duplo (na sidebar e no main) */
+}
+
+.sidebar {
+  width: 260px;
+  height: 100%; /* Sidebar sempre 100% da altura da tela */
+  background-color: var(--bg-navbar);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; /* Impede a sidebar de "esmagar" se o conteúdo principal for grande */
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column; /* Força um item abaixo do outro */
+  padding: 0 16px;        /* Espaçamento lateral interno */
+  gap: 4px;               /* Espaço constante entre os itens */
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto; /* Scroll apenas aqui quando a tabela for grande */
+  padding: 40px;
+  background-color: var(--bg-main);
+}
+
+ /* labels de categoria */
+.brand-name {
+  display: block;
+  padding: 10px 28px;
+  font-size: 11px;
+  color: var(--color-gray-400);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Alinhamento do Header e Logo */
+.sidebar-header {
+  .sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 24px;
+}
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.logo-container img {
+  height: 32px;
+  width: auto;
+}
+
+/* Estilo da Divisória no menu lateral*/
+.divider {
+  height: 1px;
+  background-color: var(--color-gray-100);
+  margin: 16px 24px;
+  opacity: 0.3;
+}
+
+/* Ajuste nos Labels (MENU PRINCIPAL e OPÇÕES) */
+.brand-name {
+  display: block;
+  padding: 8px 24px;
+  font-size: 11px;
+  color: var(--color-gray-400);
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* Garantir que o ícone e o texto no nav-item estejam alinhados */
+.nav-item {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-radius: 8px;
+  color: var(--color-gray-100);
+  box-sizing: border-box;
+  transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+  background-color: var(--color-primary-600);
+  color: var(--color-primary-50);
+}

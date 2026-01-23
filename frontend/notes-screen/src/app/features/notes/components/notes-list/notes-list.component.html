@@ -1,0 +1,68 @@
+<div class="container" style="padding: 20px;">
+
+  <h2>Notas</h2>
+
+  <div class="filters-row" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Site</mat-label>
+      <input matInput [(ngModel)]="filters.site" (keyup.enter)="search()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Equipamento</mat-label>
+      <input matInput [(ngModel)]="filters.equipment" (keyup.enter)="search()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Período</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate [(ngModel)]="filters.startDate" placeholder="Início">
+        <input matEndDate [(ngModel)]="filters.endDate" placeholder="Fim">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="search()">
+      Filtrar
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="notes" class="mat-elevation-z8" style="width: 100%;">
+
+    <ng-container matColumnDef="site">
+      <th mat-header-cell *matHeaderCellDef> Site </th>
+      <td mat-cell *matCellDef="let element"> {{element.site}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="equipment">
+      <th mat-header-cell *matHeaderCellDef> Equipamento </th>
+      <td mat-cell *matCellDef="let element"> {{element.equipment}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="message">
+      <th mat-header-cell *matHeaderCellDef> Mensagem </th>
+      <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="timestamp">
+      <th mat-header-cell *matHeaderCellDef> Data </th>
+      <td mat-cell *matCellDef="let element"> {{ formatDisplayDate(element.timestamp) }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div style="display: flex; justify-content: flex-end; margin-top: 10px; gap: 10px; align-items: center;">
+    <button mat-button (click)="prevPage()" [disabled]="filters.page === 0">
+      <img class="img-mirror img-primary" src="/assets/icons/chevron.svg"/>
+    </button>
+    <span>Página {{filters.page + 1}}</span>
+    <button mat-button (click)="nextPage()" [disabled]="notes.length < filters.size">
+      <img class="img-primary" src="/assets/icons/chevron.svg"/>
+    </button>
+  </div>
+
+</div>

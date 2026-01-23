@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class NoteDTO {
-    @NotNull
+    
     private UUID id;
 
     @Schema(description = "Nome do site/localidade/empresa", example = "Alpha-01")

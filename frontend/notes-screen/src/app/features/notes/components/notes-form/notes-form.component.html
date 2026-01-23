@@ -1,0 +1,51 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <h1>Cadastrar nota</h1>
+    </mat-card-header>
+
+    <form [formGroup]="notesForm" (ngSubmit)="createNote()">
+      <mat-card-content>
+        <div class="form-grid">
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Site</mat-label>
+            <input matInput [formControl]="getControl('site')" placeholder="Local do equipamento">
+            <mat-error *ngIf="getControl('site').invalid">O site é obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Equipamento</mat-label>
+            <input matInput [formControl]="getControl('equipment')" placeholder="nome do equipamento">
+            <mat-error *ngIf="getControl('equipment').invalid">O equipmento é obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Variável</mat-label>
+            <input matInput [formControl]="getControl('variable')" placeholder="Variável que está sendo medida">
+            <mat-error *ngIf="getControl('variable').invalid">A variável é obrigatória</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Autor</mat-label>
+            <input matInput [formControl]="getControl('author')" placeholder="Quem está coletando a medição">
+            <mat-error *ngIf="getControl('author').invalid">O autor é obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Mensagem</mat-label>
+            <input matInput [formControl]="getControl('message')" placeholder="Observações relevantes">
+            <mat-error *ngIf="getControl('message').invalid">A mensagem é obrigatória e deve conter pelo menos 5 caracteres</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-button type="button" (click)="clearForm()">Limpar</button>
+        <button mat-raised-button color="primary" [disabled]="notesForm.invalid">
+          registrar nota
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

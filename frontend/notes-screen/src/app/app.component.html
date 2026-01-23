@@ -1,0 +1,59 @@
+<div class="app-container">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-container">
+        <button mat-icon-button routerLink="/home" aria-label="redireciona para a tela inicial">
+          <img src="/assets/icons/logo.svg" alt="Logo da empresa" />
+        </button>
+      </div>
+
+      <span class="brand-name">MENU PRINCIPAL</span>
+    </div>
+
+      <nav class="sidebar-nav">
+        <a routerLink="" class="nav-item">
+          <img src="/assets/icons/map.svg" class="icon" alt="Tela inicial"/>
+          <span class="label">Home</span>
+        </a>
+
+      <a routerLink="/analytics" routerLinkActive="active-link" class="nav-item">
+        <img src="/assets/icons/notes.svg" class="icon" alt="Análises">
+        <span class="label">Análises</span>
+      </a>
+
+      <a routerLink="/notes" routerLinkActive="active-link" class="nav-item">
+        <img src="/assets/icons/notes.svg" class="icon" alt="Notas">
+        <span class="label">Notas</span>
+      </a>
+
+      <a routerLink="/history" routerLinkActive="active-link" class="nav-item">
+        <img src="/assets/icons/history.svg" class="icon" alt="Histórico"/>
+        <span class="label">Histórico</span>
+      </a>
+
+      <a routerLink="/map" routerLinkActive="active-link" class="nav-item">
+        <img src="/assets/icons/map.svg" class="icon" alt="Mapa"/>
+        <span class="label">Mapa</span>
+      </a>
+
+      <a routerLink="/dashboard" routerLinkActive="active-link" class="nav-item">
+        <img src="/assets/icons/dashboard.svg" class="icon" alt="Gráficos"/>
+        <span class="label">Dashboard</span>
+      </a>
+
+    </nav>
+    <br/>
+    <div class="divider"></div>
+    <span class="brand-name">OPÇÕES</span>
+    <nav class="sidebar-nav">
+      <a routerLink="/logs" routerLinkActive="active-link" class="nav-item">
+        <img src="/assets/icons/logs.svg" class="icon" alt="Registro de atividades"/>
+        <span class="label">Logs</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
